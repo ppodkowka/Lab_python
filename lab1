@@ -1,0 +1,50 @@
+from pathlib import Path
+from PIL import Image
+
+
+def hello_world():
+    print("Hello World\n")
+    print("Type your name, surname, and your birth date:")
+    data = input()
+    print(data)
+
+
+def lock():
+    print("Set 4-digit code:")
+    code = input()
+    print("Type code:")
+    code_temp = input()
+    for x in range(5):
+        if code == code_temp:
+            print("Correct code")
+            break
+        elif x < 4:
+            print("Wrong code, try again")
+            code_temp = input()
+        else :
+            print("Wrong code, lock is blocked")
+
+
+def count_files():
+    file_number = 0
+    for path in Path("C:\PP_1350").iterdir():
+        if path.is_file():
+            file_number += 1
+    print(file_number)
+
+
+def file_tree():
+    for path in Path("C:\BartyzelBarczyk").rglob('*'):
+        print(path)
+
+
+def convert_to_png():
+    for path in Path("C:\PP_1350\jpg").rglob('*.jpg'):
+        print(path)
+        im = Image.open(path)
+        path.replace("jpg","png")
+        im.save(path)
+
+
+if __name__ == '__main__':
+    convert_to_png()
