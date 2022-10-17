@@ -41,10 +41,39 @@ def file_tree():
 def convert_to_png():
     for path in Path("C:\PP_1350\jpg").rglob('*.jpg'):
         print(path)
-        im = Image.open(path)
-        path.replace("jpg","png")
-        im.save(path)
+        convert(path)
+
+def convert(path):
+    im = Image.open(path)
+    path.with_suffix('.png')
+    im.save(path)
+
+def delete_words():
+
+    words = ["sie", "oraz", "nigdy", "dlaczego", " i "]
+    for word in words:
+        with open(r"C:\PP_1350\text.txt","r") as file:
+            text = file.read()
+        with open(r"C:\PP_1350\text.txt","w") as file:
+            new_text = text.replace(word, "")
+            file.write(new_text)
+
+
+ def replace_words():
+     how_to_replace = {
+         "i": "oraz",
+         "oraz": "i",
+         "nigdy": "prawie nigdy",
+         "dlaczego": "czemu",
+     }
+
+     with open(r"C:\PP_1350\text.txt", "r") as file:
+         text = file.read()
+     with open(r"C:\PP_1350\text.txt", "w") as file:
+         for k, v in how_to_replace.items():
+             new_text = text.replace(k, v)
+             file.write(new_text)
 
 
 if __name__ == '__main__':
-    convert_to_png()
+    delete_words()
