@@ -75,5 +75,109 @@ def delete_words():
              file.write(new_text)
 
 
+def rownaniekwadratowe():
+    a = int(input("Enter a: "))
+    b = int(input("Enter b: "))
+    c = int(input("Enter c: "))
+
+    delta = (b*b) - 4*(a*c)
+
+    if(delta > 0):
+        x1=(-b + math.sqrt(delta))/(2*a)
+        x2=(-b - math.sqrt(delta))/(2*a)
+        print("There are 2 results:")
+        print("x1=" + str(x1) + " and x2=" + str(x2))
+    elif(delta == 0):
+        x=-b/(2*a)
+        print("There is 1 result:")
+        print("x=" + str(x))
+    else:
+        print("NO RESULTS")
+
+
+
+def create_random_numbers(num, start, end):
+    array = []
+    number = random.randint(start, end)
+
+    for x in range(num):
+        while number in array:
+            number = random.randint(start, end)
+        array.append(number)
+    print("Random numbers:")
+    print(array)
+    return array
+
+
+def bubble_sort(array):
+    n = len(array)
+
+    for i in range(n):
+        # Create a flag that will allow the function to
+        # terminate early if there's nothing left to sort
+        already_sorted = True
+
+        # Start looking at each item of the list one by one,
+        # comparing it with its adjacent value. With each
+        # iteration, the portion of the array that you look at
+        # shrinks because the remaining items have already been
+        # sorted.
+        for j in range(n - i - 1):
+            if array[j] < array[j + 1]:
+                # when array[j] < array[j + 1] we have sort from higher to lower, when > we have from lower to higher
+                # If the item you're looking at is greater than its
+                # adjacent value, then swap them
+                array[j], array[j + 1] = array[j + 1], array[j]
+
+                # Since you had to swap two elements,
+                # set the `already_sorted` flag to `False` so the
+                # algorithm doesn't finish prematurely
+                already_sorted = False
+
+        # If there were no swaps during the last iteration,
+        # the array is already sorted, and you can terminate
+        if already_sorted:
+            break
+
+    print("After bubble sort:")
+    print(array)
+    return array
+
+
+def product_of_2_vectors():
+    a=[1,2,12,4]
+    b=[2,4,2,8]
+    x = np.dot(a, b)
+    print(x)
+
+def sum_2_matrix():
+    array1 = np.random.randint(10, size=(128, 128))
+    array2 = np.random.randint(10, size=(128, 128))
+
+    sum = array1 + array2
+    print(sum)
+
+def product_2_matrix():
+    array1 = np.random.randint(10, size=(8, 8))
+    array2 = np.random.randint(10, size=(8, 8))
+
+    product = np.matmul(array1, array2)
+    print(product)
+
+
+def determinant_of_matrix():
+    x = random.randint(0, 50)
+    array = np.random.randint(10, size=(x, x))
+
+    np.linalg.det(array)
+    print(array)
+
+
+
+
 if __name__ == '__main__':
-    delete_words()
+    #bubble_sort(create_random_numbers(50,1,100))
+    #product_of_2_vectors()
+    #sum_2_matrix()
+    #product_2_matrix()
+    determinant_of_matrix()
