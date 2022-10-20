@@ -59,7 +59,7 @@ def delete_words():
             file.write(new_text)
 
 
- def replace_words():
+def replace_words():
      how_to_replace = {
          "i": "oraz",
          "oraz": "i",
@@ -67,12 +67,22 @@ def delete_words():
          "dlaczego": "czemu",
      }
 
-     with open(r"C:\PP_1350\text.txt", "r") as file:
-         text = file.read()
-     with open(r"C:\PP_1350\text.txt", "w") as file:
-         for k, v in how_to_replace.items():
-             new_text = text.replace(k, v)
-             file.write(new_text)
+     infile = r"C:\Users\ppodk\OneDrive\Pulpit\programowanie\Lab_Python\sth"
+     outfile = r"C:\Users\ppodk\OneDrive\Pulpit\programowanie\Lab_Python\sthnew"
+
+     with open(infile,"r") as fin, open(outfile, "w") as fout:
+         for line in fin:
+             for keys, values in how_to_replace.items():
+                 line = line.replace(keys, values)
+         fout.write(line)
+
+     # with open(infile,'r+') as file:
+     #     text = file.read()
+     #     for keys,values in how_to_replace.items():
+     #         text = text.replace(keys,values)
+     #     file.seek(0)
+     #     file.truncate()
+     #     file.write(text)
 
 
 def rownaniekwadratowe():
