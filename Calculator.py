@@ -26,32 +26,37 @@ def test1():
 
 def Calculator():
     print("This is calculator for Complex numbers")
+    print("If you want use it as a normal calculator just type one number and in result ignore imaginary number")
     print("Example of operation: ")
-    print("1 -1i ")
+    print("1 -1 ")
     print("-")
-    print("2 1i \n")
+    print("2 1 ")
+    print("Result: -1.0 + 0.0i\n")
 
-    x1,x2= input("Enter first complex number: ").split()
+    elems1 = input("Enter first complex number: ").split()
+    #if elems1 have 1 number that means user inserted only 1 number so we need to put 0 as imaginary
+    if(len(elems1) == 1):
+        elems1.append(0)
+    a = ComplexNumbers(*[float(x) for x in elems1])
+
     sign = input("Enter sign: ")
-    y1,y2= input("Enter second complex number: ").split()
 
-    x2 = x2.strip("i")
-    y2 = y2.strip("i")
-
-    x = ComplexNumbers(float(x1),float(x2))
-    y = ComplexNumbers(float(y1),float(y2))
+    elems2 = input("Enter first complex number: ").split()
+    if (len(elems2) == 1):
+        elems2.append(0)
+    b = ComplexNumbers(*[float(x) for x in elems2])
 
     if(sign == "+"):
-        result = x + y
+        result = a + b
         print("Result: " + str(result.real) + " + " + str(result.imag) + "i")
     elif(sign == "-"):
-        result = x - y
+        result = a - b
         print("Result: " + str(result.real) + " + " + str(result.imag) + "i")
     elif (sign == "*"):
-        result = x * y
+        result = a * b
         print("Result: " + str(result.real) + " + " + str(result.imag) + "i")
     elif (sign == "/"):
-        result = x / y
+        result = a / b
         print("Result: " + str(result.real) + " + " + str(result.imag) + "i")
 
 if __name__ == "__main__":
