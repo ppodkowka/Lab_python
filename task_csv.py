@@ -33,14 +33,14 @@ def rem_csv(to_remove: str):
 def main():
     print("List of movies:\n")
     read_csv()
-    choice = input("\nEnter: \n1 - write row to CSV\n2 - delete from CSV\n")
+    choice = input("\nEnter: \nadd - write row to CSV\ndelete - delete from CSV\n")
 
-    if(choice == str(1)):
+    if(choice == "add"):
         title = input("Type Title:\n")
         rating = input("Type Rating(0-5):\n")
         description = input("Type Description:\n")
         add_csv(title, rating, description)
-    elif(choice == str(2)):
+    elif(choice == "delete"):
         to_remove = input("Type Title or Description of Movie to remove:\n")
         rem_csv(to_remove)
     else:
